@@ -1,15 +1,16 @@
 <template>
   <div id="app">
-    <h1>{{ $store.state.Todos.sayHello }} </h1>
+    <Dos/>
   </div>
 </template>
 
 <script>
 
+import Dos from "./components/Dos.vue";
+
 export default {
   name: 'App',
-  components: {
-  },
+  components: {  Dos },
 };
 </script>
 
