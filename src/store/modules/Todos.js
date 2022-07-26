@@ -1,3 +1,4 @@
+import axios from "axios";
 export default {
     state: {
         todos: [{
@@ -21,5 +22,10 @@ export default {
         }
     },
     mutations: {},
-    actionis: {},
+    actions: {
+        async getTodos() {
+            let res = await axios.get("https://jsonplaceholder.typicode.com/todos");
+            console.log(res.data);
+        },
+    },
 }
