@@ -8,7 +8,7 @@
       </div>
       <div class="row">
         <div class="col-md-4 my-4" v-for="todo in myTodos" :key="todo.id">
-          <b-card bg-variant="dark" text-variant="white" class="text-center">
+          <b-card @dblclick="toggleCompleted(todo)" :bg-variant="dynamicBackground(todo)" text-variant="white" class="text-center">
             <b-card-text class="d-flex justify-content-between">
               <span>{{ todo.title }}</span>
               <span @click="deleteTodo(todo.id)"><b-icon icon="trash-fill" variant="danger"></b-icon></span>
@@ -35,7 +35,16 @@ export default {
             "myTodos"
         ])
     },
-    methods: mapActions(["getTodos","deleteTodo"]),
+  methods: {
+    toggleCompleted(todo) {
+      todo.completed = !todo.completed;
+      this.updateTodo(todo);
+    },
+    dynamicBackground(todo) {
+      return todo.completed ? 'primary' : 'dark';
+    },
+    ...mapActions(["getTodos", "deleteTodo","updateTodo"]),
+  },
     mounted() {
         this.getTodos();
     },
