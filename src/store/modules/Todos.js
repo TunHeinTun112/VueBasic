@@ -37,5 +37,9 @@ export default {
             await axios.delete(`https://jsonplaceholder.typicode.com/todos/${removeId}`);
             context.commit('deleteTodo', removeId);
         },
+        async filterTodos(context, limit) {
+            let res = await axios.get(`https://jsonplaceholder.typicode.com/todos?_limit=${limit}`);
+            context.commit('setTodos', res.data);
+        }
     },
 }

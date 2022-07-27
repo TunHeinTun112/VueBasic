@@ -4,6 +4,7 @@
     <div class="container">
       <div class="row">
         <AddTodo/>
+        <FilterTodos/>
       </div>
       <div class="row">
         <div class="col-md-4 my-4" v-for="todo in myTodos" :key="todo.id">
@@ -23,6 +24,7 @@
 <script>
 import { mapActions, mapGetters } from 'vuex';
 import AddTodo from './AddTodo.vue';
+import FilterTodos from './FilterTodos.vue';
 
 export default {
     computed: {
@@ -37,7 +39,7 @@ export default {
     mounted() {
         this.getTodos();
     },
-    components: { AddTodo },
+    components: { AddTodo, FilterTodos },
 }
 </script>
 
